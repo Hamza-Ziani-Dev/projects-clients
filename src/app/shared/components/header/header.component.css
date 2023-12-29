@@ -1,0 +1,6 @@
+.navbar {
+    background: linear-gradient(to right, #950b0b, #440606) !important;
+}
+.nav-link, .navbar-brand{
+    color: white !important;
+}

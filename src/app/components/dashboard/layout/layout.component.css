@@ -1,0 +1,7 @@
+.navbar {
+    background: linear-gradient(to right, #0b9530, #064414) !important;
+    font-family: 'Century Gothic', sans-serif !important;
+}
+.nav-link, .navbar-brand{
+    color: white !important;
+}
