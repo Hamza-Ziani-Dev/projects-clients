@@ -8,17 +8,14 @@ import { Task } from 'src/app/interface/Task.interface';
 
 
 
-const ELEMENT_DATA: Task[] = [
-  {id: 1,title:'Hydrogen',user:'hamza',deadline:'H',status:true},
-];
 @Component({
   selector: 'app-tasks',
   templateUrl: './tasks.component.html',
   styleUrls: ['./tasks.component.css']
 })
 export class TasksComponent {
-  displayedColumns: string[] = ['id', 'title', 'user', 'deadline','status'];
-  dataSource = ELEMENT_DATA;
+  displayedColumns: string[] = ['id', 'title', 'user', 'deadline','status','action'];
+  dataSource : any;
   tasksFilter!:FormGroup
   users:any = []
   status:any = []
@@ -40,7 +37,8 @@ export class TasksComponent {
 
   getAllTasks(){
     this.tasksService.getAllTasks().subscribe((res)=>{
-      // console.log(res);
+         this.dataSource = res;
+      console.log(res);
     })
   }
 
@@ -52,6 +50,9 @@ export class TasksComponent {
       height:'500px'
     });
     dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.getAllTasks()
+      }
     });
   }
 }

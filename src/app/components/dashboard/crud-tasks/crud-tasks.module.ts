@@ -4,6 +4,7 @@ import { CrudTasksRoutingModule } from './crud-tasks-routing.module';
 import { TasksComponent } from './tasks/tasks.component';
 import { AddTaskComponent } from './add-task/add-task.component';
 import { MaterialModule } from 'src/app/material/material.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -14,6 +15,7 @@ import { MaterialModule } from 'src/app/material/material.module';
   ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     MaterialModule,
     CrudTasksRoutingModule
   ]
