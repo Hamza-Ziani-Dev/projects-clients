@@ -8,6 +8,8 @@ const routes: Routes = [
   {path:'', loadChildren: () => import(`./components/dashboard/dashboard.module`).then(m => m.DashboardModule) },
   {path:'login', loadChildren: () => import(`./components/auth/login/login.module`).then(m => m.LoginModule) },
   {path:'register', loadChildren: () => import(`./components/auth/register/register.module`).then(m => m.RegisterModule) },
+  // {path:'register', loadChildren: () => import(`./components/auth/register/register.module`).then(m => m.RegisterModule) },
+
   // { path: '**', redirectTo:"" , pathMatch:"full"},
 ]
 

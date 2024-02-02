@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,Inject} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { TasksService } from '../tasks.service';
 import * as moment from 'moment';
 import { ToastrService } from 'ngx-toastr';
@@ -13,6 +13,7 @@ import { NgxSpinnerService } from "ngx-spinner";
 })
 export class AddTaskComponent implements OnInit {
   constructor(
+    @Inject(MAT_DIALOG_DATA) public data:any,
     private fb:FormBuilder,
     public dialog: MatDialogRef<AddTaskComponent>,
     public matDialog:MatDialog,
@@ -26,7 +27,7 @@ export class AddTaskComponent implements OnInit {
   fileName = "";
   newTaskFrom : FormGroup;
 
-  ngOnInit(): void {
+  ngOnInit(): void {    
     this.createForm();
     this.getAllUsers();
   }
@@ -39,10 +40,12 @@ export class AddTaskComponent implements OnInit {
 
   createForm(){
     this.newTaskFrom = this.fb.group({
-      title : ['', Validators.required],
-      image : ['', Validators.required],
-      description : ['', Validators.required],
-      deadline : ['', Validators.required],
+      title : [this.data?.title || '', Validators.required],
+      image : [this.data?.image || ''],
+      description : [this.data?.description || '', Validators.required],
+      deadline : [this.data?.deadline || '', Validators.required],
+      status: ['In-Progress'],
+      // const headers = new HttpHeaders().set('user-id', userId);
     });
   }
 
@@ -51,13 +54,28 @@ export class AddTaskComponent implements OnInit {
     this.newTaskFrom.get('image')?.setValue(event.target.files[0]);
   }
 
-
+  // Create Task
   createTask(){
     this.spinner.show();
     let model = this.preparedFormData();
     this.taskService.createTask(model).subscribe((res)=>{
       this.spinner.hide();
       this.toaster.success("Create Success!");
+      this.dialog.close(true);
+    },error=>{
+      console.log(error);
+          this.toaster.error(error.error.message)
+    })
+  }
+
+  //Update Task:
+  updateTask(){
+    this.spinner.show();
+    let model = this.preparedFormData();
+    this.taskService.updateTask(model, this.data._id).subscribe((res)=>{
+      this.spinner.hide();
+      this.toaster.success("Update Success!");
+      
       this.dialog.close(true);
     },error=>{
       console.log(error);

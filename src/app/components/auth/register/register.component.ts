@@ -41,7 +41,7 @@ register() {
   this.registerService.getRegister(this.registerForm.value).subscribe((res:any)=>{
     localStorage.setItem("token" , res.token)
     this.toaster.success("Success" , "Register Success")
-    this.router.navigate(['/products']);
+    this.router.navigate(['/tasks']);
     this.spinner.hide();
   });
 }

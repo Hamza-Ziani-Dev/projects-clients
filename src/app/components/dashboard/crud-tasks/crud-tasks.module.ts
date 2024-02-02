@@ -17,7 +17,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     ReactiveFormsModule,
     MaterialModule,
-    CrudTasksRoutingModule
+    CrudTasksRoutingModule,
+    
   ]
 })
 export class CrudTasksModule { }
