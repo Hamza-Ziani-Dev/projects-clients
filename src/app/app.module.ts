@@ -14,9 +14,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ToastrModule } from 'ngx-toastr';
 import { CoreModule } from './core/core.module';
 import { MaterialModule } from './material/material.module';
+import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 @NgModule({
   declarations: [
-    AppComponent,   
+    AppComponent,
+    AdminDashboardComponent,   
   ],
   imports: [
     FormsModule,
