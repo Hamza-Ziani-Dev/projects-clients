@@ -18,7 +18,6 @@ export class RegisterComponent {
     private registerService:RegisterService , 
     private toaster:ToastrService,
     private router:Router,
-    private spinner : NgxSpinnerService
     ) { }
 
   registerForm!:FormGroup
@@ -37,12 +36,10 @@ export class RegisterComponent {
   }
 
 register() {
-  this.spinner.show();
   this.registerService.getRegister(this.registerForm.value).subscribe((res:any)=>{
     localStorage.setItem("token" , res.token)
     this.toaster.success("Success" , "Register Success")
     this.router.navigate(['/tasks']);
-    this.spinner.hide();
   });
 }
 

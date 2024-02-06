@@ -1,0 +1,41 @@
+<div class="p-4">
+    <header class="header d-flex justify-content-between align-items-center" >
+        <h1 class="title">Add New User</h1>
+        <button matDialogClose class="btn btn-danger">
+          <mat-icon>close</mat-icon>
+        </button>
+    </header>
+    <form [formGroup]="newUserFrom">
+        <div class="row mt-3 bloc">
+                <div class="col-md-12 input">
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Username</mat-label>
+                        <input matInput  formControlName="username" placeholder="username">
+                    </mat-form-field>
+                </div>  
+                <div class="col-md-12 input">
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Email</mat-label>
+                        <input matInput  placeholder="email" formControlName="email"/>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-12 input">
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Password</mat-label>
+                        <input matInput  placeholder="password" formControlName="password"/>
+                    </mat-form-field>
+                </div>
+        </div>
+    </form>
+
+    <footer class="tw-p-6 footer">
+        <div class="d-flex justify-content-center align-items-center">
+            <button *ngIf="!data" class="btn btn-success" (click)="addUser()">Create</button>
+            <button *ngIf="data" class="btn btn-primary" (click)="updateUser()">Update</button>
+
+            <button  class="btn btn-danger" matDialogClose>Close</button>
+            <!-- mat-flat-button -->
+          </div>
+        
+    </footer>
+</div>

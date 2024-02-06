@@ -16,7 +16,6 @@ export class LoginComponent {
     private loginService:LoginService , 
     private toaster:ToastrService,
     private router:Router,
-    private spinner : NgxSpinnerService
     ) { }
 
   loginForm!:FormGroup
@@ -36,12 +35,10 @@ export class LoginComponent {
  // Update your login method in your component
 
 login() {
-  this.spinner.show();
   this.loginService.getLogin(this.loginForm.value).subscribe((res:any)=>{
     localStorage.setItem("token" , res.token)
     this.toaster.success("Success" , "Login Success")
     this.router.navigate(['/tasks']);
-    this.spinner.hide();
   });
 }
 

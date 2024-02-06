@@ -7,6 +7,7 @@ const routes: Routes = [
     path: '', component: LayoutComponent,
   children:[
     {path:'tasks', loadChildren: () => import(`../crud-tasks/crud-tasks.module`).then(m => m.CrudTasksModule) },
+    {path:'users', loadChildren: () => import(`../crud-users/crud-users.module`).then(m => m.CrudUsersModule) },
   ]
 }
 ]

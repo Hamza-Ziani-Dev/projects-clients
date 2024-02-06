@@ -22,20 +22,12 @@ export class AddTaskComponent implements OnInit {
     private spinner : NgxSpinnerService
     ) { }
   
-  users:any = []
-
+  users:any = [];
   fileName = "";
   newTaskFrom : FormGroup;
 
   ngOnInit(): void {    
     this.createForm();
-    this.getAllUsers();
-  }
-
-  getAllUsers(){
-    this.taskService.getAllUsers().subscribe((res)=>{
-      this.users = res;
-    })
   }
 
   createForm(){
@@ -72,10 +64,10 @@ export class AddTaskComponent implements OnInit {
   updateTask(){
     this.spinner.show();
     let model = this.preparedFormData();
+    
     this.taskService.updateTask(model, this.data._id).subscribe((res)=>{
       this.spinner.hide();
       this.toaster.success("Update Success!");
-      
       this.dialog.close(true);
     },error=>{
       console.log(error);

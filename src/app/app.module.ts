@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { NgxSpinnerModule } from "ngx-spinner";
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -15,6 +14,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { CoreModule } from './core/core.module';
 import { MaterialModule } from './material/material.module';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { NgxSpinnerModule } from "ngx-spinner";
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,9 +34,9 @@ import { AdminDashboardComponent } from './components/admin-dashboard/admin-dash
     SharedModule,
     MatTableModule,
     CoreModule,
+    NgxPaginationModule,
     ToastrModule.forRoot(),
     NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' })
-    // NgxSpinnerModule.forRoot({ type: 'square-jelly-box' })
   ],
   providers: [
   ],
